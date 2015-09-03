@@ -1,11 +1,16 @@
 from random import choice, random
+import argparse
 
 def main():
     """
     Generates a poem from samples of William Carlos Williams's work
     using Markov chains.
     """
-    with open("C:\\Users\\Richard\\Documents\\C O R N E L L\\1 2014\\CS 1610\\poem\\williams_samples.txt", "rt") as f:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('filename', help='the name of the input text file')
+    args = parser.parse_args()
+    filename = args.filename
+    with open(filename, "rt") as f:
         raw = f.read()
     words = raw.split()
     dictionary = prepare(words)
